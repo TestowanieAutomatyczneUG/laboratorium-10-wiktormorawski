@@ -54,4 +54,5 @@ class NotesService:
         return sum_of_notes/amount_of_notes
 
     def clear(self):
-        self.storage.clear()
+        result = self.storage.clear()
+        return result

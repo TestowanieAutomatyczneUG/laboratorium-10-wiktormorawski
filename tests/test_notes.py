@@ -8,7 +8,7 @@ class TestNotesServiceMock(unittest.TestCase):
     def test_note_service_add_equal(self, mock_method):
         mock_method.return_value = 'added'
         temp = NotesService()
-        self.assertEqual(temp.add(Note("wiktor", 5.5)), 'added')
+        self.assertEqual(temp.add(5.5), 'added')
 
     @patch.object(NotesStorage, 'getAllNotesOf')
     def test_note_service_averageOf_equal(self, mock_method):
@@ -27,6 +27,11 @@ class TestNotesServiceMock(unittest.TestCase):
         with self.assertRaisesRegex(Exception, "Pusty zbiór ocen"):
             temp.averageOf("Zdzisiek")
 
+    @patch.object(NotesStorage, 'clear')
+    def test_note_service_add_equal(self, mock_method):
+        mock_method.return_value = 'cleared'
+        temp = NotesService()
+        self.assertEqual(temp.clear(), 'cleared')
 
 
 
