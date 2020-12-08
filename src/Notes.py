@@ -37,8 +37,8 @@ class NotesService:
         self.storage = NotesStorage()
 
     def add(self, note):
-        self.storage.add(note)
-        return
+        result = self.storage.add(note)
+        return result
 
     def averageOf(self, name):
         if type(name) != str:
@@ -49,6 +49,8 @@ class NotesService:
         for i in notes:
             sum_of_notes += i
             amount_of_notes += 1
+        if amount_of_notes == 0:
+            raise Exception('Pusty zbiór ocen')
         return sum_of_notes/amount_of_notes
 
     def clear(self):
